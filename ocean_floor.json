@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 15,
+    "to_y": 35,
+    "from_value": 1,
+    "to_value": -1
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.5,
+    "argument2": {
+      "type": "minecraft:noise",
+      "noise": "oceanworld:floor",
+      "xz_scale": 1,
+      "y_scale": 0
+    }
+  }
+}

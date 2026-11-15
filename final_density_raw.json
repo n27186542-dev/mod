@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:max",
+  "argument1": "oceanworld:ocean_floor",
+  "argument2": {
+    "type": "minecraft:max",
+    "argument1": "oceanworld:strip_land",
+    "argument2": {
+      "type": "minecraft:max",
+      "argument1": "oceanworld:small_islands",
+      "argument2": "oceanworld:sky_islands"
+    }
+  }
+}

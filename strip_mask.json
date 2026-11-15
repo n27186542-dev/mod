@@ -1,0 +1,5 @@
+{
+  "type": "oceanworld:strip_mask",
+  "half_width": 50,
+  "falloff": 40
+}

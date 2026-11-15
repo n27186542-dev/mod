@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:max",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:mul",
+        "argument1": "oceanworld:strip_mask",
+        "argument2": 2
+      },
+      "argument2": -1
+    },
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": "oceanworld:island_c",
+      "argument2": 1
+    }
+  },
+  "argument2": -0.5
+}

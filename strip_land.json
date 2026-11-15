@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:y_clamped_gradient",
+      "from_y": 55,
+      "to_y": 85,
+      "from_value": 1,
+      "to_value": -1
+    },
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:mul",
+        "argument1": "oceanworld:strip_mask",
+        "argument2": 2
+      },
+      "argument2": -2
+    }
+  },
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.8,
+    "argument2": {
+      "type": "minecraft:noise",
+      "noise": "oceanworld:hills",
+      "xz_scale": 1,
+      "y_scale": 0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "type": "minecraft:add",
+  "argument1": {
+    "type": "minecraft:add",
+    "argument1": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:mul",
+        "argument1": 4,
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": {
+            "type": "minecraft:noise",
+            "noise": "oceanworld:sky",
+            "xz_scale": 0.5,
+            "y_scale": 1.5
+          },
+          "argument2": -0.45
+        }
+      },
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": {
+            "type": "minecraft:min",
+            "argument1": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": 115,
+              "to_y": 135,
+              "from_value": -1,
+              "to_value": 1
+            },
+            "argument2": {
+              "type": "minecraft:y_clamped_gradient",
+              "from_y": 185,
+              "to_y": 205,
+              "from_value": 1,
+              "to_value": -1
+            }
+          },
+          "argument2": 3
+        },
+        "argument2": -3
+      }
+    },
+    "argument2": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:mul",
+        "argument1": 10,
+        "argument2": {
+          "type": "minecraft:add",
+          "argument1": {
+            "type": "minecraft:noise",
+            "noise": "oceanworld:sky_region",
+            "xz_scale": 1,
+            "y_scale": 0
+          },
+          "argument2": -0.2
+        }
+      },
+      "min": -3,
+      "max": 0
+    }
+  },
+  "argument2": {
+    "type": "minecraft:y_clamped_gradient",
+    "from_y": 120,
+    "to_y": 200,
+    "from_value": -0.8,
+    "to_value": 0.4
+  }
+}
