@@ -1,0 +1,49 @@
+name: Build mod
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Organize files into folders
+        run: |
+          set -e
+          R=src/main/resources
+          D=$R/data/oceanworld/worldgen
+          mkdir -p src/main/java/com/example/oceanworld $R/META-INF $R/assets/oceanworld/lang
+          mkdir -p $D/noise $D/density_function $D/noise_settings $D/world_preset
+          mkdir -p $R/data/minecraft/tags/worldgen/world_preset
+          mv OceanWorld.java StripMask.java src/main/java/com/example/oceanworld/
+          mv neoforge.mods.toml $R/META-INF/
+          mv en_us.json uk_ua.json $R/assets/oceanworld/lang/
+          mv hills.json islands.json floor.json sky.json sky_region.json $D/noise/
+          mv continents.json final_density_raw.json island_c.json ocean_floor.json sky_islands.json small_islands.json strip_land.json strip_mask.json $D/density_function/
+          mv normal.json $R/data/minecraft/tags/worldgen/world_preset/
+          for f in ocean_world*.json; do
+            if grep -q noise_router "$f"; then mv "$f" $D/noise_settings/ocean_world.json
+            elif grep -q dimensions "$f"; then mv "$f" $D/world_preset/ocean_world.json
+            fi
+          done
+          find src -type f | sort
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+
+      - name: Build
+        run: gradle build --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oceanworld-jar
+          path: build/libs/*.jar
